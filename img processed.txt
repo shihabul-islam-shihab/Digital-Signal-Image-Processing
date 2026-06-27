@@ -1,0 +1,265 @@
+lab1------------------------------------
+
+#gradient img
+import cv2
+import numpy as np
+
+img = cv2.imread('image.jpg', 0)
+img = cv2.resize(img, (400, 400))
+
+grad_x = cv2.Sobel(img, cv2.CV_64F, 1, 0)
+grad_y = cv2.Sobel(img, cv2.CV_64F, 0, 1)
+
+img2=np.hstack((grad_x, grad_y))
+
+cv2.imshow("Gradient X vs Gradient Y", img2)
+cv2.waitKey(0)
+cv2.destroyAllWindows()
+
+
+
+
+lab2------------------------------------
+
+#histogram of grayscale image
+import cv2
+import matplotlib.pyplot as plt
+
+img = cv2.imread('image.jpg', 0)
+
+plt.hist(img.ravel(), 256, [0, 256])
+plt.ylim(0, 90000)  # Adjust the y-axis limit as needed
+
+plt.title('Histogram of Grayscale Image')
+plt.show() 
+
+
+lab3------------------------------
+
+#negative image
+import cv2
+import numpy as np
+
+img=cv2.imread('image.jpg', 0)
+img=cv2.resize(img,(400,400))
+neg=255-img
+
+img2=np.hstack((img,neg))
+
+cv2.imshow("Original vs Negative", img2)
+
+cv2.waitKey(0)  
+cv2.destroyAllWindows()
+
+
+
+lab4------------------------
+
+
+#color enhancement
+import cv2
+import numpy as np
+img=cv2.imread('image.jpg')
+img=cv2.resize(img,(500,500))
+
+enhanced = cv2.convertScaleAbs(img, alpha=1.2, beta=0)
+
+img2=np.hstack((img,enhanced))
+cv2.imshow("Original vs Enhanced", img2)
+cv2.waitKey(0)
+cv2.destroyAllWindows()
+
+
+lab5--------------------------
+
+#brightness enhanced    
+import cv2
+import numpy as np
+
+img=cv2.imread('image.jpg')
+img=cv2.resize(img,(500,500))
+
+bright=cv2.convertScaleAbs(img, alpha=1.0, beta=50)
+
+img2=np.hstack((img,bright))
+
+cv2.imshow("Original vs Brightened", img2)
+cv2.waitKey(0)
+cv2.destroyAllWindows()
+
+
+
+
+lab6----------------------------
+
+#contrast enhancement
+import cv2
+import numpy as np
+
+img=cv2.imread('image.jpg')
+img=cv2.resize(img,(500,500))
+
+enhanced = cv2.convertScaleAbs(img, alpha=2, beta=0)
+img2=np.hstack((img,enhanced))
+
+cv2.imshow("Original vs Enhanced", img2)    
+cv2.waitKey(0)
+cv2.destroyAllWindows()
+
+
+
+lab7----------------------------------
+
+#image Sharpening
+import cv2
+import numpy as np
+
+img = cv2.imread('image.jpg')
+img=cv2.resize(img,(500,500))
+
+kernel = np.array([[0, -1, 0], [-1, 5,-1], [0, -1, 0]])
+sharpened = cv2.filter2D(img, -1, kernel)
+
+img2=np.hstack((img,sharpened))
+
+cv2.imshow("Original vs Sharpened", img2)
+cv2.waitKey(0)
+cv2.destroyAllWindows()
+
+
+
+lab8-------------------------
+#average filtering
+import cv2
+import numpy as np  
+
+img=cv2.imread('image.jpg')
+img=cv2.resize(img,(500,500))   
+
+avg = cv2.blur(img, (5,5))
+
+img2=np.hstack((img,avg))
+
+cv2.imshow("Original vs Average Filter", img2)
+cv2.waitKey(0)
+cv2.destroyAllWindows()
+
+
+
+lab9-----------------------------------
+
+#gaussian filter
+import cv2
+import numpy as np
+
+img = cv2.imread('image.jpg')
+img=cv2.resize(img,(600,600))
+
+gauss = cv2.GaussianBlur(img, (5,5), 0)
+
+nimg=np.hstack((img,gauss))
+
+cv2.imshow("Original vs Gaussian Filter", nimg)
+cv2.waitKey(0)
+cv2.destroyAllWindows()
+
+
+
+lab10--------------------
+
+#median filtering
+import cv2
+import numpy as np   
+
+img=cv2.imread('image.jpg')
+img=cv2.resize(img,(500,500))
+
+median = cv2.medianBlur(img, 5)
+
+img2=np.hstack((img,median))
+
+cv2.imshow("Original vs Median Filter", img2)
+cv2.waitKey(0)
+cv2.destroyAllWindows()
+
+
+
+
+for big and smart:
+
+#gaussian filter
+import cv2
+import numpy as np
+
+img = cv2.imread('image.jpg')
+img1=cv2.imread('image.jpg',0)
+img=cv2.resize(img,(400,400))
+img1=cv2.resize(img1,(400,400))
+
+gauss1 = cv2.GaussianBlur(img1, (5,5), 0)
+gauss2 = cv2.GaussianBlur(img, (5,5), 0)
+
+# Convert grayscale to BGR (3-channel)
+gauss1 = cv2.cvtColor(gauss1, cv2.COLOR_GRAY2BGR)
+
+img2=np.hstack((img,gauss1,gauss2))
+
+cv2.imshow("Original vs Gaussian gray vs gau RGB", img2)
+cv2.waitKey(0)
+cv2.destroyAllWindows()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
